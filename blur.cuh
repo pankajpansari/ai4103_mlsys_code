@@ -17,7 +17,7 @@ void cuda_blur_kernel_convolution(int thread_index,
 // GPU memory, invoking the kernel, and cleaning up afterwards. The result
 // will be stored in out_data. The function returns the amount of time that
 // it took for the function to complete (prior to returning) in milliseconds.
-float cuda_call_blur_kernel(const unsigned int blocks,
+void cuda_call_blur_kernel(const unsigned int blocks,
                             const unsigned int threads_per_block,
                             const float *raw_data,
                             const float *blur_v,

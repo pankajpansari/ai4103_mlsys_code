@@ -14,6 +14,7 @@
 #include "blur.cuh"
 
 using std::cout;
+using std::cerr;
 using std::endl;
 
 const float PI = 3.14159265358979;
@@ -31,7 +32,6 @@ float gaussian(float x, float mean, float std) {
  */
 
 int large_gauss_test(int argc, char **argv) {
-    check_args(argc, argv);
 
     /* Form Gaussian blur vector */
     float mean = 0.0;
@@ -71,10 +71,6 @@ int large_gauss_test(int argc, char **argv) {
 
     // Open input audio file
     in_file = sf_open(argv[3], SFM_READ, &in_file_info);
-    if (!in_file) {
-        cerr << "Cannot open input file, exiting\n";
-        exit(EXIT_FAILURE);
-    }
 
     // Read audio
     float *all_channel_input =
