@@ -58,9 +58,15 @@ void multiply_mat(const float *x, const float *y, float *out, const int N)
     cudaFree(out_d);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    int N = 64; // Square matrices of shape N x N (here N = 32)
+    if (argc < 2)
+    {
+        printf("Usage: %s <mat_size>\n", argv[0]);
+        return 1;
+    }
+    int N = atoi(argv[1]); // Square matrices of shape N x N (N >= 32 ideally)
+ 
     size_t size = N * N * sizeof(float);
 
     float *x = (float *)malloc(size);
